@@ -1,0 +1,20 @@
+name: Generate Pacman Contribution Graph
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: abozanona/pacman-contribution-graph@main
+        with:
+          github_user_name: YOUR_USERNAME
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Generate pacman graph"
